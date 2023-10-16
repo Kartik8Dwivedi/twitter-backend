@@ -1,14 +1,8 @@
-import {
-  create as _create,
-  insertMany,
-  findById,
-  findByIdAndDelete,
-  find,
-} from "../models/hashtags";
+import hashtag from "../models/hashtags";
 class HashtagRepository {
   async create(data) {
     try {
-      const tweet = await _create(data);
+      const tweet = await hashtag.create(data);
       return tweet;
     } catch (error) {
       console.log("Error in repository layer", error);
@@ -16,7 +10,7 @@ class HashtagRepository {
   }
   async bulkCreate(data) {
     try {
-      const tags = await insertMany(data);
+      const tags = await hashtag.insertMany(data);
       return tags;
     } catch (error) {
       console.log("Error in repository layer", error);
@@ -24,13 +18,15 @@ class HashtagRepository {
   }
   async get(id) {
     try {
-      const tweets = await findById(id);
+      const tweets = await hashtag.findById(id);
       return tweets;
-    } catch (error) {}
+    } catch (error) {
+      console.log("Error in repository layer", error);
+    }
   }
   async destroy(id) {
     try {
-      const tweet = await findByIdAndDelete(id);
+      const tweet = await hashtag.findByIdAndDelete(id);
       return tweet;
     } catch (error) {
       console.log("Error in repository layer", error);
@@ -38,7 +34,7 @@ class HashtagRepository {
   }
   async findByName(titleList) {
     try {
-      const tags = await find({
+      const tags = await hashtag.find({
         title: titleList,
       });
       return tags;
