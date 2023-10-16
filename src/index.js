@@ -1,8 +1,5 @@
-const express = require("express");
-const connect = require("./config/database");
-
-const { HashtagRepository, TweetRepository } = require("./repository/index");
-const TweetService = require("./services/tweet-service");
+import express from "express";
+import { connect } from "./config/database.js";
 
 const app = express();
 

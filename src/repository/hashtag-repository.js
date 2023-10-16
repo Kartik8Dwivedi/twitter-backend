@@ -1,8 +1,14 @@
-const Hashtag = require("../models/hashtags");
+import {
+  create as _create,
+  insertMany,
+  findById,
+  findByIdAndDelete,
+  find,
+} from "../models/hashtags";
 class HashtagRepository {
   async create(data) {
     try {
-      const tweet = await Hashtag.create(data);
+      const tweet = await _create(data);
       return tweet;
     } catch (error) {
       console.log("Error in repository layer", error);
@@ -10,7 +16,7 @@ class HashtagRepository {
   }
   async bulkCreate(data) {
     try {
-      const tags = await Hashtag.insertMany(data);
+      const tags = await insertMany(data);
       return tags;
     } catch (error) {
       console.log("Error in repository layer", error);
@@ -18,13 +24,13 @@ class HashtagRepository {
   }
   async get(id) {
     try {
-      const tweets = await Hashtag.findById(id);
+      const tweets = await findById(id);
       return tweets;
     } catch (error) {}
   }
   async destroy(id) {
     try {
-      const tweet = await Hashtag.findByIdAndDelete(id);
+      const tweet = await findByIdAndDelete(id);
       return tweet;
     } catch (error) {
       console.log("Error in repository layer", error);
@@ -32,7 +38,7 @@ class HashtagRepository {
   }
   async findByName(titleList) {
     try {
-      const tags = await Hashtag.find({
+      const tags = await find({
         title: titleList,
       });
       return tags;
@@ -41,4 +47,4 @@ class HashtagRepository {
     }
   }
 }
-module.exports = HashtagRepository;
+export default HashtagRepository;
