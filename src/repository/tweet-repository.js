@@ -9,9 +9,9 @@ class TweetRepository {
       console.log("Error in repository layer", error);
     }
   }
-  async findAll() {
+  async getAll(offset,limit) {
     try {
-        const tweet = await Tweet.find();
+        const tweet = await Tweet.find().skip(offset).limit(limit);
         return tweet;
     } catch (error) {
         console.log("Error in repository layer", error);
