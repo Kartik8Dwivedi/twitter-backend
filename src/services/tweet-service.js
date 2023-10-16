@@ -1,4 +1,4 @@
-import { TweetRepository, HashtagRepository } from "../repository/index";
+import { TweetRepository, HashtagRepository } from "../repository/index.js";
 
 class TweetService {
   constructor() {
@@ -24,6 +24,7 @@ class TweetService {
         tag.tweets.push(tweet.id);
         tag.save();
       });
+      console.log("Tweeeet", tweet);
       return tweet;
     } catch (error) {
       console.log("Error in service layer", error);
