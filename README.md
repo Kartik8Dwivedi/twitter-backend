@@ -1,3 +1,10 @@
+ # Twitter Backend Clone
+  - In this project we will try to rebuild the features of twitter/threads/facebook by using NodeJS, ExpressJS and MongoDB as the database;
+  - This project will be of monolith architecture.
+  - The testing of this project is done by JEST.
+  - We will be deploying this backend project on AWS by using docker and concept of kubernetes as well at the completion of this backend.
+  - The features of this backend project will increase as the project grows.
+  - Currently I am pushing a cleaner version of the codebase for the twitter backend; we are building the frontend for this project as well in ReactJS.
  # Features of this Twitter backend:
 
  - User should be able to create a post
