@@ -11,7 +11,7 @@ class LikeService {
     // /api/v1/likes/toggle?id=modelid&type=Tweet
     console.log(modelId, modelType, userId);
     if (modelType == "Tweet") {
-      var likeable = await this.tweetRepository.get(modelId);
+      var likeable = await this.tweetRepository.find(modelId);
     } else if (modelType == "Comment") {
       // TODO
     } else {
@@ -26,7 +26,7 @@ class LikeService {
     if (exists) {
       likeable.likes.pull(exists.id);
       await likeable.save();
-      await exists.remove();
+      await this.likeRepository.destroy(exists.id);
       var isAdded = false;
     } else {
       const newLike = await this.likeRepository.create({

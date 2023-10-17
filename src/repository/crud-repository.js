@@ -32,7 +32,7 @@ class CrudRepository {
 
   async getAll(id) {
     try {
-      const result = await this.model.find();
+      const result = await this.model.find({});
       return result;
     } catch (error) {
       console.log("Error in repository(crud) layer", error);
