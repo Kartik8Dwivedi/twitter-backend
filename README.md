@@ -20,3 +20,10 @@
  - User authentication and authorization
  - Private/Public profile restrictions
  - Every tweet might be having some specific hashtags
+
+ ## APIs
+
+ - for creating tweet:
+      - POST
+      - localhost:3000/api/v1/tweets
+      - [req.body] - attributes: content: ""

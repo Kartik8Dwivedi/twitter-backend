@@ -8,12 +8,6 @@ const tweetSchema = new Schema(
       trim: true,
       maxLength: [400, "Tweet cannot be more than 400 characters"],
     },
-    // hashtags: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Hashtag",
-    //   },
-    // ],
   },
   { timestamps: true }
 );
