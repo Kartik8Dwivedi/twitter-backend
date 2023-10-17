@@ -1,12 +1,26 @@
-import { Schema, model } from "mongoose";
+import mongoose ,{ Schema, model } from "mongoose";
 
 const tweetSchema = new Schema(
   {
     content: {
       type: String,
       required: true,
-      trim: true,
-      maxLength: [400, "Tweet cannot be more than 400 characters"],
+      max: [250, "Tweet cannot be more than 250 characters"],
+    },
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Like",
+      },
+    ],
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
+    image: {
+      type: String,
     },
   },
   { timestamps: true }

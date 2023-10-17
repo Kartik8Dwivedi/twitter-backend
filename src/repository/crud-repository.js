@@ -48,3 +48,5 @@ class CrudRepository {
     }
   }
 }
+
+export default CrudRepository;

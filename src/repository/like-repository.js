@@ -3,7 +3,15 @@ import crudRepository from './crud-repository.js'
 
 class LikeRepository extends crudRepository {
   constructor() {
-    super(Like)
+    super(Like);
+  }
+  async findByUserAndLikeable(data) {
+    try {
+      const like = await Like.findOne(data);
+      return like;
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
