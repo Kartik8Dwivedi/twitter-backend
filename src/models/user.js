@@ -33,7 +33,7 @@ userSchema.methods.comparePassword = function compare(password){
     return bcrypt.compareSync(password, userPassword)
 }
 
-userSchema.methods.generateJWTtoken = function generateJWTtoken(){
+userSchema.methods.generateJWTtoken = function generate(){
     return jwt.sign({
         id: this._id,
         email: this.email,

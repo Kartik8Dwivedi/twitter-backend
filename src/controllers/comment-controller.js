@@ -6,7 +6,7 @@ const commentService = new CommentService();
    try {
      const modelType = req.query.modelType;
      const modelId = req.query.modelId;
-     const userId = req.body.userId;
+     const userId = req.user.id;
      const content = req.body.content;
      const response = await commentService.create(
        modelId,
