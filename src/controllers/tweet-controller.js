@@ -1,9 +1,23 @@
 import TweetService from "../services/tweet-service.js";
+import upload from '../config/s3-file-upload.config.js'
+
+const singleUploader = upload.single('image');
 
 const tweetService = new TweetService();
 
 export const createTweet = async (req, res) => {
   try {
+    singleUploader(req,res,function(err,data){
+      if(err){
+        return res.status(500).json({
+          success: false,
+          message: "Error uploading image",
+          data: {},
+          errors: err,
+        });
+      }
+      console.log("Image URL is: ",req,file);
+    })
     const response = await tweetService.create(req.body);
     console.log("Response", response)
     return res.status(201).json({
