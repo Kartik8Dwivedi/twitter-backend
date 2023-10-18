@@ -11,7 +11,7 @@ class UserRepository extends CrudRepository {
       const response = await User.findOne(data);
       return response;
     } catch (error) {
-      throw error;
+      return new Error(error);
     }
   }
 }
