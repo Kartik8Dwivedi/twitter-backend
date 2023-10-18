@@ -30,3 +30,32 @@
 - User authentication and authorization
 - Private/Public profile restrictions
 - Every tweet might be having some specific hashtags
+
+
+## API's
+  - Create a tweet
+    - POST request
+    - localhost:{PORT}/api/v1/tweets
+    - req.body -> content to be pushed inside tweet
+  - Get Tweet
+    - GET request
+    - localhost:{PORT}/api/v1/tweets/:id
+    - req.params.id -> id of tweet to be fetched
+  - Comment on a Tweet
+    - POST request
+    - localhost:{PORT}/api/v1/comments
+    - parameters required:
+      - modelType = req.query.modelType;
+      - modelId = req.query.modelId;
+      - userId = req.body.userId;
+      - content = req.body.content;
+  - Like/Unlike a tweet/comment
+    - POST request
+    - localhost:{PORT}/api/v1/likes/toggle
+    - parameters required:
+      - modelId = req.query.modelId;
+      - modelType = req.query.modelType;
+      - userId = req.body.userId;
+      - modelId is the id of specific tweet/comment
+      - modelType is a enum : ["Tweet","Comment"]
+      - userId is the id of the user liking/unliking the Tweet/Comment
