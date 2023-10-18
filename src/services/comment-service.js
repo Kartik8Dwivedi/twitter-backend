@@ -5,7 +5,7 @@ class CommentService{
         this.commentRepository = new CommentRepository();
         this.tweetRepository = new TweetRepository();
     }
-    async createComment(modelId, modelType,userId,content){
+    async create(modelId, modelType,userId,content){
         if(modelType == 'Tweet'){
             var commentable = await this.tweetRepository.get(modelId);
         }else if(modelType == 'Comment'){

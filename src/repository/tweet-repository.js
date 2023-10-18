@@ -21,9 +21,6 @@ class TweetRepository extends CrudRepository {
       const tweet = await Tweet.findById(id)
         .populate({
           path: "comments",
-          populate: {
-            path: "comments",
-          },
         })
         .lean();
       return tweet;
@@ -43,7 +40,11 @@ class TweetRepository extends CrudRepository {
 
   async find(id) {
     try {
-      const tweet = await Tweet.findById(id).populate({ path: "likes" });
+      const tweet = await Tweet.findById(id)
+      .populate({ 
+        path: "likes",
+      });
+      await tweet.comments.populate({path:"comments"})
       return tweet;
     } catch (error) {
       console.log(error);
